@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LandLens Static Demo</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+  h1 { color: #2a9d8f; text-align: center; }
+  .property { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; background: white; border-radius: 8px; }
+  button { background: #2a9d8f; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 4px; }
+  button:hover { background: #21867a; }
+</style>
+</head>
+<body>
+
+<h1>LandLens Static Demo</h1>
+
+<div id="properties"></div>
+
+<script>
+  const properties = [
+    { id: 1, address: "123 Main St, Chicago, IL", price: 250000, rehabEstimate: 40000, arv: 320000, roi: "28%" },
+    { id: 2, address: "456 Elm St, Dallas, TX", price: 180000, rehabEstimate: 35000, arv: 250000, roi: "30%" },
+    { id: 3, address: "789 Oak St, Atlanta, GA", price: 300000, rehabEstimate: 60000, arv: 390000, roi: "30%" }
+  ];
+
+  const container = document.getElementById("properties");
+  properties.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "property";
+    div.innerHTML = `
+      <h2>${p.address}</h2>
+      <p><strong>Purchase Price:</strong> $${p.price.toLocaleString()}</p>
+      <p><strong>Estimated Rehab Cost:</strong> $${p.rehabEstimate.toLocaleString()}</p>
+      <p><strong>After Repair Value (ARV):</strong> $${p.arv.toLocaleString()}</p>
+      <p><strong>Estimated ROI:</strong> ${p.roi}</p>
+      <button onclick="alert('Report generated! (demo only)')">Generate Report (PDF)</button>
+    `;
+    container.appendChild(div);
+  });
+</script>
+
+</body>
+</html>
